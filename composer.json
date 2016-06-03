@@ -1,0 +1,24 @@
+{
+    "name": "loevgaard/dandomain-import-export",
+    "description": "This library makes it easier to handle imports and exports to and from the Dandomain webshop",
+    "minimum-stability": "dev",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Joachim Loevgaard",
+            "email": "joachim@loevgaard.dk"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "6.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "5.4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "DandomainImportExport\\": "src/"
+        }
+    }
+}
