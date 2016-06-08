@@ -51,13 +51,15 @@ class Export {
     }
 
     /**
-     * @param $client
-     * @TODO An abstract client class should be implemented and enforced as a parameter
+     * @param Client $client
      */
-    public function setClient($client) {
+    public function setClient(Client $client) {
         $this->client = $client;
     }
 
+    /**
+     * @return Client
+     */
     public function getClient() {
         if(!$this->client) {
             $this->client = new Client();
