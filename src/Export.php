@@ -47,6 +47,7 @@ class Export {
             }
             $lastTag = $xml->localName;
         }
+        $xml->close();
         unset($xml);
     }
 
