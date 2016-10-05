@@ -45,8 +45,8 @@ abstract class Import {
         $this->localPath = $localPath;
         $this->globalUrl = $globalUrl;
 
-        $this->params['response'] = 1; // this will output XML instead of HTML
         $this->params = array_merge($this->params, $params);
+        $this->params['response'] = 1; // this will output XML instead of HTML
     }
 
     /**
@@ -69,10 +69,20 @@ abstract class Import {
         return $this->localPath;
     }
 
+    /**
+     * @return Result
+     */
     public function import() {
         $this->createImportFile();
 
-        return $this->getClient()->import($this->globalUrl);
+        /**
+         * @todo this depends on the guzzle http client, which it should not
+         * @todo move the getBody()->getContents() to the client instead
+         */
+        $importResult = new Result($this->getClient()->import($this->globalUrl)->getBody()->getContents());
+
+        @unlink($this->localPath);
+        return $importResult;
     }
 
     /**

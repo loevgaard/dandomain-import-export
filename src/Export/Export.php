@@ -18,8 +18,9 @@ class Export {
 
     public function __construct($exportId, $params = []) {
         $this->exportId = $exportId;
-        $this->params['response'] = 1; // this will output XML instead of HTML
+
         $this->params = array_merge($this->params, $params);
+        $this->params['response'] = 1; // this will output XML instead of HTML
     }
 
     public function elements() {
