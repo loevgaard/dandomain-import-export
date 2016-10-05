@@ -14,14 +14,14 @@ class Price extends Element {
     protected $productName;
     protected $retailPrice;
 
-    public function __construct($productNumber = '', $currency = '', $b2bId = 0, $amount = 1, $costPrice = '', $unitPrice = '', $profit = '', $specialOfferPrice = '', $languageId = '', $productName = '', $retailPrice = '')
+    public function __construct($productNumber = '', $currency = '', $b2bId = 0, $amount = 1, $unitPrice = 0, $costPrice = 0, $profit = 0, $specialOfferPrice = 0, $languageId = 0, $productName = '', $retailPrice = 0)
     {
         $this->productNumber        = $productNumber;
         $this->currency             = $currency;
         $this->b2bId                = $b2bId;
         $this->amount               = $amount;
-        $this->costPrice            = $costPrice;
         $this->unitPrice            = $unitPrice;
+        $this->costPrice            = $costPrice;
         $this->profit               = $profit;
         $this->specialOfferPrice    = $specialOfferPrice;
         $this->languageId           = $languageId;
@@ -42,28 +42,28 @@ class Price extends Element {
             $xml .= "<PRICE_B2B_ID>{$this->b2bId}</PRICE_B2B_ID>";
         }
         if($this->amount) {
-            $xml .= "<AMOUNT>{$this->amount}</AMOUNT>";
+            $xml .= '<AMOUNT>' . (int)$this->amount . '</AMOUNT>';
         }
         if($this->costPrice) {
-            $xml .= "<PROD_COST_PRICE>{$this->costPrice}</PROD_COST_PRICE>";
+            $xml .= '<PROD_COST_PRICE>' . $this->formatMoney($this->costPrice) . '</PROD_COST_PRICE>';
         }
         if($this->unitPrice) {
-            $xml .= "<UNIT_PRICE>{$this->unitPrice}</UNIT_PRICE>";
+            $xml .= '<UNIT_PRICE>' . $this->formatMoney($this->unitPrice) . '</UNIT_PRICE>';
         }
         if($this->profit) {
-            $xml .= "<AVANCE>{$this->profit}</AVANCE>";
+            $xml .= '<AVANCE>' . $this->formatMoney($this->profit) . '</AVANCE>';
         }
         if($this->specialOfferPrice) {
-            $xml .= "<SPECIAL_OFFER_PRICE>{$this->specialOfferPrice}</SPECIAL_OFFER_PRICE>";
+            $xml .= '<SPECIAL_OFFER_PRICE>' . $this->formatMoney($this->specialOfferPrice) . '</SPECIAL_OFFER_PRICE>';
         }
         if($this->languageId) {
-            $xml .= "<LANGUAGE_ID>{$this->languageId}</LANGUAGE_ID>";
+            $xml .= '<LANGUAGE_ID>' . (int)$this->languageId . '</LANGUAGE_ID>';
         }
         if($this->productName) {
             $xml .= "<PROD_NAME>{$this->productName}</PROD_NAME>";
         }
         if($this->retailPrice) {
-            $xml .= "<PROD_RETAIL_PRICE>{$this->retailPrice}</PROD_RETAIL_PRICE>";
+            $xml .= '<PROD_RETAIL_PRICE>' . $this->formatMoney($this->retailPrice) . '</PROD_RETAIL_PRICE>';
         }
         $xml .= '</PRICE>';
         return $xml;
