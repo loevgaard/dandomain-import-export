@@ -1,21 +1,19 @@
 <?php
-namespace DandomainImportExport\Tests;
+namespace Dandomain\Tests;
 
-use DandomainImportExport\Export;
-use DandomainImportExport\Client;
+use Dandomain\Export\Export;
+use Dandomain\ImportExportClient;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use GuzzleHttp\Psr7\Request;
-use GuzzleHttp\Exception\RequestException;
 
 class ExportTest extends \PHPUnit_Framework_TestCase
 {
     protected function setUp()
     {
-        Client::setHost('http://www.example.com');
-        Client::setUsername('username');
-        Client::setPassword('password');
+        ImportExportClient::setHost('http://www.example.com');
+        ImportExportClient::setUsername('username');
+        ImportExportClient::setPassword('password');
     }
 
     public function testElements()
@@ -26,7 +24,7 @@ class ExportTest extends \PHPUnit_Framework_TestCase
 <STATUS>1</STATUS>
 <TIME>0:1</TIME>
 <COUNT>21954</COUNT>
-<FILE_URL>http://www.2trendy.dk/images/ImportExport/export-PRODUCTS.xml</FILE_URL>
+<FILE_URL>http://www.example.com/images/ImportExport/export-PRODUCTS.xml</FILE_URL>
 </EXPORT_RESULT>
 XML;
 
@@ -68,7 +66,7 @@ XML;
         ]);
 
         $handler = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handler]);
+        $client = new ImportExportClient(['handler' => $handler]);
 
         $export = new Export(1);
         $export->setClient($client);

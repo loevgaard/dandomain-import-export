@@ -1,19 +1,30 @@
 <?php
-namespace DandomainImportExport;
+namespace Dandomain\Export;
+
+use Dandomain\ImportExportClientTrait;
 
 class Export {
-    protected $client;
+    use ImportExportClientTrait;
+
+    /**
+     * @var int
+     */
+    protected $exportId;
+
+    /**
+     * @var array
+     */
     protected $params = [];
 
     public function __construct($exportId, $params = []) {
-        $this->params['exportid'] = $exportId;
+        $this->exportId = $exportId;
         $this->params['response'] = 1; // this will output XML instead of HTML
         $this->params = array_merge($this->params, $params);
     }
 
     public function elements() {
         $client     = $this->getClient();
-        $response   = $client->export($this->params);
+        $response   = $client->export($this->exportId, $this->params);
 
         if($response->getStatusCode() != 200) {
             throw new \RuntimeException($response->getReasonPhrase());
@@ -49,23 +60,10 @@ class Export {
         }
         $xml->close();
         unset($xml);
+        @unlink($filename);
     }
 
-    /**
-     * @param Client $client
-     */
-    public function setClient(Client $client) {
-        $this->client = $client;
-    }
-
-    /**
-     * @return Client
-     */
-    public function getClient() {
-        if(!$this->client) {
-            $this->client = new Client();
-        }
-
-        return $this->client;
+    public function setResponse($val) {
+        $this->params['response'] = $val ? 1 : 0;
     }
 }

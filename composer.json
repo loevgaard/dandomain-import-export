@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DandomainImportExport\\": "src/"
+            "Dandomain\\": "src/"
         }
     }
 }
