@@ -49,7 +49,12 @@ abstract class Import {
         $this->params = array_merge($this->params, $params);
     }
 
-    public function import() {
+    /**
+     * Returns the local path of the file
+     *
+     * @return string
+     */
+    public function createImportFile() {
         @unlink($this->localPath);
         $fp = fopen($this->localPath, 'w');
         fwrite($fp, $this->xmlStart);
@@ -60,6 +65,12 @@ abstract class Import {
 
         fwrite($fp, $this->xmlEnd);
         fclose($fp);
+
+        return $this->localPath;
+    }
+
+    public function import() {
+        $this->createImportFile();
 
         return $this->getClient()->import($this->globalUrl);
     }
