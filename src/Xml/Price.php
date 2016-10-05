@@ -10,11 +10,12 @@ class Price extends Element {
     protected $unitPrice;
     protected $profit;
     protected $specialOfferPrice;
+    protected $periodId;
     protected $languageId;
     protected $productName;
     protected $retailPrice;
 
-    public function __construct($productNumber = '', $currency = '', $b2bId = 0, $amount = 1, $unitPrice = 0, $costPrice = 0, $profit = 0, $specialOfferPrice = 0, $languageId = 0, $productName = '', $retailPrice = 0)
+    public function __construct($productNumber = '', $currency = '', $b2bId = 0, $amount = 1, $unitPrice = 0, $costPrice = 0, $profit = 0, $specialOfferPrice = 0, $periodId = '', $languageId = 0, $productName = '', $retailPrice = 0)
     {
         $this->productNumber        = $productNumber;
         $this->currency             = $currency;
@@ -24,6 +25,7 @@ class Price extends Element {
         $this->costPrice            = $costPrice;
         $this->profit               = $profit;
         $this->specialOfferPrice    = $specialOfferPrice;
+        $this->periodId             = $periodId;
         $this->languageId           = $languageId;
         $this->productName          = $productName;
         $this->retailPrice          = $retailPrice;
@@ -55,6 +57,9 @@ class Price extends Element {
         }
         if($this->specialOfferPrice) {
             $xml .= '<SPECIAL_OFFER_PRICE>' . $this->formatMoney($this->specialOfferPrice) . '</SPECIAL_OFFER_PRICE>';
+        }
+        if($this->periodId) {
+            $xml .= "<PRICE_PERIOD_ID>{$this->periodId}</PRICE_PERIOD_ID>";
         }
         if($this->languageId) {
             $xml .= '<LANGUAGE_ID>' . (int)$this->languageId . '</LANGUAGE_ID>';
