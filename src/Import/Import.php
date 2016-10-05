@@ -46,7 +46,6 @@ abstract class Import {
         $this->globalUrl = $globalUrl;
 
         $this->params = array_merge($this->params, $params);
-        $this->params['response'] = 1; // this will output XML instead of HTML
     }
 
     /**
@@ -94,9 +93,5 @@ abstract class Import {
 
     public function setUpdateOnly($val) {
         $this->params['updateonly'] = $val ? 1 : 0;
-    }
-
-    public function setResponse($val) {
-        $this->params['response'] = $val ? 1 : 0;
     }
 }

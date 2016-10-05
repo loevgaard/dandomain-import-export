@@ -20,7 +20,6 @@ class Export {
         $this->exportId = $exportId;
 
         $this->params = array_merge($this->params, $params);
-        $this->params['response'] = 1; // this will output XML instead of HTML
     }
 
     public function elements() {
@@ -62,9 +61,5 @@ class Export {
         $xml->close();
         unset($xml);
         @unlink($filename);
-    }
-
-    public function setResponse($val) {
-        $this->params['response'] = $val ? 1 : 0;
     }
 }

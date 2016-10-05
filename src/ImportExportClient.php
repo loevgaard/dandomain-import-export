@@ -31,7 +31,7 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
         $this->validateCredentials();
 
         $url = sprintf(
-            '%s/admin/modules/importexport/export_v6.aspx?user=%s&password=%s&exportid=%d',
+            '%s/admin/modules/importexport/export_v6.aspx?response=1&user=%s&password=%s&exportid=%d',
             self::$host, self::$username, self::$password, $exportId
         );
 
