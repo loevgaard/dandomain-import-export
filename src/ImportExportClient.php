@@ -9,6 +9,8 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
     protected static $password;
 
     public function import($file, $params = []) {
+        $this->validateCredentials();
+
         $url = sprintf(
             '%s/admin/modules/importexport/import_v6.aspx?response=1&user=%s&password=%s&file=%s',
             self::$host, self::$username, self::$password, rawurlencode($file)
@@ -26,6 +28,8 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
 
     public function export($exportId, $params = [])
     {
+        $this->validateCredentials();
+
         $url = sprintf(
             '%s/admin/modules/importexport/export_v6.aspx?user=%s&password=%s&exportid=%d',
             self::$host, self::$username, self::$password, $exportId
@@ -36,6 +40,12 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
         }
 
         return $this->get($url);
+    }
+
+    protected function validateCredentials() {
+        if(is_null(self::$host) || is_null(self::$username) || is_null(self::$password)) {
+            throw new \RuntimeException('You have not set all the credentials required to run an import or export: host, username or password');
+        }
     }
 
     /**
