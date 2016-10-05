@@ -34,15 +34,9 @@ class Price extends Element {
     public function getXml()
     {
         $xml = '<PRICE>';
-        if($this->productNumber) {
-            $xml .= "<PRICE_PROD_NUM>{$this->productNumber}</PRICE_PROD_NUM>";
-        }
-        if($this->currency) {
-            $xml .= "<CURRENCY_CODE>{$this->currency}</CURRENCY_CODE>";
-        }
-        if($this->b2bId) {
-            $xml .= "<PRICE_B2B_ID>{$this->b2bId}</PRICE_B2B_ID>";
-        }
+        $xml .= "<PRICE_PROD_NUM>{$this->productNumber}</PRICE_PROD_NUM>";
+        $xml .= "<CURRENCY_CODE>{$this->currency}</CURRENCY_CODE>";
+        $xml .= '<PRICE_B2B_ID>' . (int)$this->b2bId . '</PRICE_B2B_ID>';
         if($this->amount) {
             $xml .= '<AMOUNT>' . (int)$this->amount . '</AMOUNT>';
         }
