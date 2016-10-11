@@ -46,7 +46,7 @@ class Export {
 
         $resource = fopen($filename, 'w');
         $stream = \GuzzleHttp\Psr7\stream_for($resource);
-        $client->get($xml->FILE_URL, [
+        $client->get((string)$xml->FILE_URL, [
             'sink' => $stream
         ]);
         fclose($resource);
