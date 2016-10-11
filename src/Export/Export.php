@@ -44,6 +44,10 @@ class Export {
 
         $filename = sys_get_temp_dir() . '/' . uniqid('export---' . date('Y-m-d-H-i-s') . '---') . '.xml';
 
+        if(ImportExportClient::isDebug()) {
+            echo "Downloading export file to\n$filename\n";
+        }
+
         $resource = fopen($filename, 'w');
         $stream = \GuzzleHttp\Psr7\stream_for($resource);
         $client->get((string)$xml->FILE_URL, [
