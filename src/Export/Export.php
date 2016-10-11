@@ -22,6 +22,9 @@ class Export {
         $this->params = array_merge($this->params, $params);
     }
 
+    /**
+     * @return \Generator
+     */
     public function elements() {
         $client     = $this->getClient();
         $response   = $client->export($this->exportId, $this->params);
