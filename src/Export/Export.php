@@ -1,6 +1,8 @@
 <?php
 namespace Dandomain\Export;
 
+use Dandomain\Import\Import;
+use Dandomain\ImportExportClient;
 use Dandomain\ImportExportClientTrait;
 
 class Export {
@@ -34,6 +36,11 @@ class Export {
         }
 
         $xml = new \SimpleXMLElement($response->getBody()->getContents());
+
+        if(ImportExportClient::isDebug()) {
+            echo "Export file XML:\n";
+            print_r($xml);
+        }
 
         $filename = sys_get_temp_dir() . '/' . uniqid('export---' . date('Y-m-d-H-i-s') . '---') . '.xml';
 

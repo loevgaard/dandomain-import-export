@@ -64,6 +64,15 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
     }
 
     /**
+     * Returns true if we are in debug mode
+     *
+     * @return bool
+     */
+    public static function isDebug() {
+        return self::$debug;
+    }
+
+    /**
      * Sets the main shop url, i.e. http://www.example.com
      *
      * @param string $host
