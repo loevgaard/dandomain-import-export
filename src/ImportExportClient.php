@@ -4,6 +4,7 @@ namespace Dandomain;
 use GuzzleHttp\Client as GuzzleHttpClient;
 
 class ImportExportClient extends GuzzleHttpClient implements ImportExportClientInterface {
+    protected static $debug = false;
     protected static $host;
     protected static $username;
     protected static $password;
@@ -39,6 +40,11 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
             $url = $url . '&' . http_build_query($params);
         }
 
+        if(self::$debug) {
+            echo "Getting URL:\n";
+            echo $url . "\n";
+        }
+
         return $this->get($url);
     }
 
@@ -46,6 +52,15 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
         if(is_null(self::$host) || is_null(self::$username) || is_null(self::$password)) {
             throw new \RuntimeException('You have not set all the credentials required to run an import or export: host, username or password');
         }
+    }
+
+    /**
+     * Sets the debug mode
+     *
+     * @param boolean $debug
+     */
+    public static function setDebug($debug) {
+        self::$debug = (bool)$debug;
     }
 
     /**
