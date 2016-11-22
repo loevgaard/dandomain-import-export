@@ -73,49 +73,49 @@ class Advanced extends Element
     {
         $xml = '';
         if ($this->vendorNumber) {
-            $xml .= '<VENDOR_NUM>' . $this->vendorNumber . '<VENDOR_NUM>';
+            $xml .= '<VENDOR_NUM>' . $this->vendorNumber . '</VENDOR_NUM>';
         }
         if ($this->unitId) {
-            $xml .= '<PROD_UNIT_ID>' . $this->unitId . '<PROD_UNIT_ID>';
+            $xml .= '<PROD_UNIT_ID>' . $this->unitId . '</PROD_UNIT_ID>';
         }
         if ($this->typeId) {
-            $xml .= '<PROD_TYPE_ID>' . $this->typeId . '<PROD_TYPE_ID>';
+            $xml .= '<PROD_TYPE_ID>' . $this->typeId . '</PROD_TYPE_ID>';
         }
         if ($this->hidden) {
-            $xml .= '<PROD_HIDDEN>' . $this->hidden . '<PROD_HIDDEN>';
+            $xml .= '<PROD_HIDDEN>' . $this->hidden . '</PROD_HIDDEN>';
         }
         if ($this->new) {
-            $xml .= '<PROD_NEW>' . $this->new . '<PROD_NEW>';
+            $xml .= '<PROD_NEW>' . $this->new . '</PROD_NEW>';
         }
         if ($this->newPeriodId) {
-            $xml .= '<PROD_NEW_PERIOD_ID>' . $this->newPeriodId . '<PROD_NEW_PERIOD_ID>';
+            $xml .= '<PROD_NEW_PERIOD_ID>' . $this->newPeriodId . '</PROD_NEW_PERIOD_ID>';
         }
         if ($this->frontPage) {
-            $xml .= '<PROD_FRONT_PAGE>' . $this->frontPage . '<PROD_FRONT_PAGE>';
+            $xml .= '<PROD_FRONT_PAGE>' . $this->frontPage . '</PROD_FRONT_PAGE>';
         }
         if ($this->variantMasterId) {
-            $xml .= '<PROD_VAR_MASTER_ID>' . $this->variantMasterId . '<PROD_VAR_MASTER_ID>';
+            $xml .= '<PROD_VAR_MASTER_ID>' . $this->variantMasterId . '</PROD_VAR_MASTER_ID>';
         }
         if ($this->maillistExport) {
-            $xml .= '<MAILLIST_EXPORT>' . $this->maillistExport . '<MAILLIST_EXPORT>';
+            $xml .= '<MAILLIST_EXPORT>' . $this->maillistExport . '</MAILLIST_EXPORT>';
         }
         if ($this->toplistHidden) {
-            $xml .= '<TOPLIST_HIDDEN>' . $this->toplistHidden . '<TOPLIST_HIDDEN>';
+            $xml .= '<TOPLIST_HIDDEN>' . $this->toplistHidden . '</TOPLIST_HIDDEN>';
         }
         if ($this->internalId) {
-            $xml .= '<INTERNAL_ID>' . $this->internalId . '<INTERNAL_ID>';
+            $xml .= '<INTERNAL_ID>' . $this->internalId . '</INTERNAL_ID>';
         }
         if ($this->uniqueUrlName) {
-            $xml .= '<PROD_UNIQUE_URL_NAME>' . $this->uniqueUrlName . '<PROD_UNIQUE_URL_NAME>';
+            $xml .= '<PROD_UNIQUE_URL_NAME>' . $this->uniqueUrlName . '</PROD_UNIQUE_URL_NAME>';
         }
         if ($this->barcodeNumber) {
-            $xml .= '<PROD_BARCODE_NUMBER>' . $this->barcodeNumber . '<PROD_BARCODE_NUMBER>';
+            $xml .= '<PROD_BARCODE_NUMBER>' . $this->barcodeNumber . '</PROD_BARCODE_NUMBER>';
         }
         if ($this->googleFeedCategory) {
-            $xml .= '<PROD_GOOGLE_FEED_CATEGORY>' . $this->googleFeedCategory . '<PROD_GOOGLE_FEED_CATEGORY>';
+            $xml .= '<PROD_GOOGLE_FEED_CATEGORY>' . $this->googleFeedCategory . '</PROD_GOOGLE_FEED_CATEGORY>';
         }
         if ($this->directLink) {
-            $xml .= '<DIRECT_LINK>' . $this->directLink . '<DIRECT_LINK>';
+            $xml .= '<DIRECT_LINK>' . $this->directLink . '</DIRECT_LINK>';
         }
         return $xml;
     }

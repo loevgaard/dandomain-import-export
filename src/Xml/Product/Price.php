@@ -37,22 +37,22 @@ class Price extends Element
     {
         $xml = '';
         if ($this->currencyCode) {
-            $xml .= '<CURRENCY_CODE>' . $this->currencyCode . '<CURRENCY_CODE>';
+            $xml .= '<CURRENCY_CODE>' . $this->currencyCode . '</CURRENCY_CODE>';
         }
         if ($this->priceB2bId) {
-            $xml .= '<PRICE_B2B_ID>' . $this->priceB2bId . '<PRICE_B2B_ID>';
+            $xml .= '<PRICE_B2B_ID>' . $this->priceB2bId . '</PRICE_B2B_ID>';
         }
         if ($this->amount) {
-            $xml .= '<AMOUNT>' . $this->amount . '<AMOUNT>';
+            $xml .= '<AMOUNT>' . $this->amount . '</AMOUNT>';
         }
         if ($this->unitPrice) {
-            $xml .= '<UNIT_PRICE>' . $this->formatMoney($this->unitPrice) . '<UNIT_PRICE>';
+            $xml .= '<UNIT_PRICE>' . $this->formatMoney($this->unitPrice) . '</UNIT_PRICE>';
         }
         if ($this->avance) {
-            $xml .= '<AVANCE>' . $this->formatMoney($this->avance) . '<AVANCE>';
+            $xml .= '<AVANCE>' . $this->formatMoney($this->avance) . '</AVANCE>';
         }
         if ($this->specialOfferPrice) {
-            $xml .= '<SPECIAL_OFFER_PRICE>' . $this->formatMoney($this->specialOfferPrice) . '<SPECIAL_OFFER_PRICE>';
+            $xml .= '<SPECIAL_OFFER_PRICE>' . $this->formatMoney($this->specialOfferPrice) . '</SPECIAL_OFFER_PRICE>';
         }
         return $xml;
     }

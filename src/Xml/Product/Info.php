@@ -37,22 +37,22 @@ class Info extends Element
     {
         $xml = '';
         if ($this->created) {
-            $xml .= '<PROD_CREATED>' . $this->created->format('d-m-Y H:i:s') . '<PROD_CREATED>';
+            $xml .= '<PROD_CREATED>' . $this->created->format('d-m-Y H:i:s') . '</PROD_CREATED>';
         }
         if ($this->createdBy) {
-            $xml .= '<PROD_CREATED_BY>' . $this->createdBy . '<PROD_CREATED_BY>';
+            $xml .= '<PROD_CREATED_BY>' . $this->createdBy . '</PROD_CREATED_BY>';
         }
         if ($this->edited) {
-            $xml .= '<PROD_EDITED>' . $this->edited->format('d-m-Y H:i:s') . '<PROD_EDITED>';
+            $xml .= '<PROD_EDITED>' . $this->edited->format('d-m-Y H:i:s') . '</PROD_EDITED>';
         }
         if ($this->editedBy) {
-            $xml .= '<PROD_EDITED_BY>' . $this->editedBy . '<PROD_EDITED_BY>';
+            $xml .= '<PROD_EDITED_BY>' . $this->editedBy . '</PROD_EDITED_BY>';
         }
         if ($this->viewed) {
-            $xml .= '<PROD_VIEWED>' . $this->viewed . '<PROD_VIEWED>';
+            $xml .= '<PROD_VIEWED>' . $this->viewed . '</PROD_VIEWED>';
         }
         if ($this->salesCount) {
-            $xml .= '<PROD_SALES_COUNT>' . $this->salesCount . '<PROD_SALES_COUNT>';
+            $xml .= '<PROD_SALES_COUNT>' . $this->salesCount . '</PROD_SALES_COUNT>';
         }
         return $xml;
     }

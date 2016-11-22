@@ -33,19 +33,19 @@ class Stock extends Element
     {
         $xml = '';
         if ($this->stockCount) {
-            $xml .= '<STOCK_COUNT>' . $this->stockCount . '<STOCK_COUNT>';
+            $xml .= '<STOCK_COUNT>' . $this->stockCount . '</STOCK_COUNT>';
         }
         if ($this->stockLimit) {
-            $xml .= '<STOCK_LIMIT>' . $this->stockLimit . '<STOCK_LIMIT>';
+            $xml .= '<STOCK_LIMIT>' . $this->stockLimit . '</STOCK_LIMIT>';
         }
         if ($this->delivery) {
-            $xml .= '<PROD_DELIVERY>' . $this->delivery . '<PROD_DELIVERY>';
+            $xml .= '<PROD_DELIVERY>' . $this->delivery . '</PROD_DELIVERY>';
         }
         if ($this->deliveryNotInStock) {
-            $xml .= '<PROD_DELIVERY_NOT_IN_STOCK>' . $this->deliveryNotInStock . '<PROD_DELIVERY_NOT_IN_STOCK>';
+            $xml .= '<PROD_DELIVERY_NOT_IN_STOCK>' . $this->deliveryNotInStock . '</PROD_DELIVERY_NOT_IN_STOCK>';
         }
         if ($this->locationNumber) {
-            $xml .= '<PROD_LOCATION_NUMBER>' . $this->locationNumber . '<PROD_LOCATION_NUMBER>';
+            $xml .= '<PROD_LOCATION_NUMBER>' . $this->locationNumber . '</PROD_LOCATION_NUMBER>';
         }
         return $xml;
     }

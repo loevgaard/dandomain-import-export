@@ -89,61 +89,61 @@ class General extends Element
     {
         $xml = '';
         if ($this->productNumber) {
-            $xml .= '<PROD_NUM>' . $this->productNumber . '<PROD_NUM>';
+            $xml .= '<PROD_NUM>' . $this->productNumber . '</PROD_NUM>';
         }
         if ($this->languageId) {
-            $xml .= '<LANGUAGE_ID>' . $this->languageId . '<LANGUAGE_ID>';
+            $xml .= '<LANGUAGE_ID>' . $this->languageId . '</LANGUAGE_ID>';
         }
         if ($this->name) {
-            $xml .= '<PROD_NAME>' . $this->name . '<PROD_NAME>';
+            $xml .= '<PROD_NAME>' . $this->name . '</PROD_NAME>';
         }
         if ($this->edbpriserNumber) {
-            $xml .= '<EDBPriser_NUM>' . $this->edbpriserNumber . '<EDBPriser_NUM>';
+            $xml .= '<EDBPriser_NUM>' . $this->edbpriserNumber . '</EDBPriser_NUM>';
         }
         if ($this->weight) {
-            $xml .= '<PROD_WEIGHT>' . $this->weight . '<PROD_WEIGHT>';
+            $xml .= '<PROD_WEIGHT>' . $this->weight . '</PROD_WEIGHT>';
         }
         if ($this->sort) {
-            $xml .= '<PROD_SORT>' . $this->sort . '<PROD_SORT>';
+            $xml .= '<PROD_SORT>' . $this->sort . '</PROD_SORT>';
         }
         if ($this->minBuy) {
-            $xml .= '<PROD_MIN_BUY>' . $this->minBuy . '<PROD_MIN_BUY>';
+            $xml .= '<PROD_MIN_BUY>' . $this->minBuy . '</PROD_MIN_BUY>';
         }
         if ($this->minBuyB2b) {
-            $xml .= '<PROD_MIN_BUY_B2B>' . $this->minBuyB2b . '<PROD_MIN_BUY_B2B>';
+            $xml .= '<PROD_MIN_BUY_B2B>' . $this->minBuyB2b . '</PROD_MIN_BUY_B2B>';
         }
         if ($this->maxBuy) {
-            $xml .= '<PROD_MAX_BUY>' . $this->maxBuy . '<PROD_MAX_BUY>';
+            $xml .= '<PROD_MAX_BUY>' . $this->maxBuy . '</PROD_MAX_BUY>';
         }
         if ($this->photoUrl) {
-            $xml .= '<PROD_PHOTO_URL>' . $this->photoUrl . '<PROD_PHOTO_URL>';
+            $xml .= '<PROD_PHOTO_URL>' . $this->photoUrl . '</PROD_PHOTO_URL>';
         }
         if ($this->fileUrl) {
-            $xml .= '<PROD_FILE_URL>' . $this->fileUrl . '<PROD_FILE_URL>';
+            $xml .= '<PROD_FILE_URL>' . $this->fileUrl . '</PROD_FILE_URL>';
         }
         if ($this->pdfUrl) {
-            $xml .= '<PROD_PDF_URL>' . $this->pdfUrl . '<PROD_PDF_URL>';
+            $xml .= '<PROD_PDF_URL>' . $this->pdfUrl . '</PROD_PDF_URL>';
         }
         if ($this->pdfUrl2) {
-            $xml .= '<PROD_PDF_URL_2>' . $this->pdfUrl2 . '<PROD_PDF_URL_2>';
+            $xml .= '<PROD_PDF_URL_2>' . $this->pdfUrl2 . '</PROD_PDF_URL_2>';
         }
         if ($this->pdfUrl3) {
-            $xml .= '<PROD_PDF_URL_3>' . $this->pdfUrl3 . '<PROD_PDF_URL_3>';
+            $xml .= '<PROD_PDF_URL_3>' . $this->pdfUrl3 . '</PROD_PDF_URL_3>';
         }
         if ($this->retailPrice) {
-            $xml .= '<PROD_RETAIL_PRICE>' . $this->retailPrice . '<PROD_RETAIL_PRICE>';
+            $xml .= '<PROD_RETAIL_PRICE>' . $this->retailPrice . '</PROD_RETAIL_PRICE>';
         }
         if ($this->costPrice) {
-            $xml .= '<PROD_COST_PRICE>' . $this->costPrice . '<PROD_COST_PRICE>';
+            $xml .= '<PROD_COST_PRICE>' . $this->costPrice . '</PROD_COST_PRICE>';
         }
         if ($this->variantMaster) {
-            $xml .= '<PROD_VAR_MASTER>' . $this->variantMaster . '<PROD_VAR_MASTER>';
+            $xml .= '<PROD_VAR_MASTER>' . $this->variantMaster . '</PROD_VAR_MASTER>';
         }
         if ($this->notes) {
-            $xml .= '<PROD_NOTES>' . $this->notes . '<PROD_NOTES>';
+            $xml .= '<PROD_NOTES>' . $this->notes . '</PROD_NOTES>';
         }
         if ($this->pictureAltText) {
-            $xml .= '<PROD_PICTURE_ALT_TEXT>' . $this->pictureAltText . '<PROD_PICTURE_ALT_TEXT>';
+            $xml .= '<PROD_PICTURE_ALT_TEXT>' . $this->pictureAltText . '</PROD_PICTURE_ALT_TEXT>';
         }
         return $xml;
     }

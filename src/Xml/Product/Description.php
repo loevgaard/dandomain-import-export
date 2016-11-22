@@ -37,22 +37,22 @@ class Description extends Element
     {
         $xml = '';
         if ($this->descriptionShort) {
-            $xml .= '<DESC_SHORT>' . $this->descriptionShort . '<DESC_SHORT>';
+            $xml .= '<DESC_SHORT>' . $this->descriptionShort . '</DESC_SHORT>';
         }
         if ($this->descriptionLong) {
-            $xml .= '<DESC_LONG>' . $this->descriptionLong . '<DESC_LONG>';
+            $xml .= '<DESC_LONG>' . $this->descriptionLong . '</DESC_LONG>';
         }
         if ($this->descriptionLong2) {
-            $xml .= '<DESC_LONG_2>' . $this->descriptionLong2 . '<DESC_LONG_2>';
+            $xml .= '<DESC_LONG_2>' . $this->descriptionLong2 . '</DESC_LONG_2>';
         }
         if ($this->searchword) {
-            $xml .= '<PROD_SEARCHWORD>' . $this->searchword . '<PROD_SEARCHWORD>';
+            $xml .= '<PROD_SEARCHWORD>' . $this->searchword . '</PROD_SEARCHWORD>';
         }
         if ($this->metaDescription) {
-            $xml .= '<META_DESCRIPTION>' . $this->metaDescription . '<META_DESCRIPTION>';
+            $xml .= '<META_DESCRIPTION>' . $this->metaDescription . '</META_DESCRIPTION>';
         }
         if ($this->title) {
-            $xml .= '<TITLE>' . $this->title . '<TITLE>';
+            $xml .= '<TITLE>' . $this->title . '</TITLE>';
         }
         return $xml;
     }

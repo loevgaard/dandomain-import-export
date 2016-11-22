@@ -53,34 +53,34 @@ class CustomFields extends Element
     {
         $xml = '';
         if ($this->field1) {
-            $xml .= '<FIELD_1>' . $this->field1 . '<FIELD_1>';
+            $xml .= '<FIELD_1>' . $this->field1 . '</FIELD_1>';
         }
         if ($this->field2) {
-            $xml .= '<FIELD_2>' . $this->field2 . '<FIELD_2>';
+            $xml .= '<FIELD_2>' . $this->field2 . '</FIELD_2>';
         }
         if ($this->field3) {
-            $xml .= '<FIELD_3>' . $this->field3 . '<FIELD_3>';
+            $xml .= '<FIELD_3>' . $this->field3 . '</FIELD_3>';
         }
         if ($this->field4) {
-            $xml .= '<FIELD_4>' . $this->field4 . '<FIELD_4>';
+            $xml .= '<FIELD_4>' . $this->field4 . '</FIELD_4>';
         }
         if ($this->field5) {
-            $xml .= '<FIELD_5>' . $this->field5 . '<FIELD_5>';
+            $xml .= '<FIELD_5>' . $this->field5 . '</FIELD_5>';
         }
         if ($this->field6) {
-            $xml .= '<FIELD_6>' . $this->field6 . '<FIELD_6>';
+            $xml .= '<FIELD_6>' . $this->field6 . '</FIELD_6>';
         }
         if ($this->field7) {
-            $xml .= '<FIELD_7>' . $this->field7 . '<FIELD_7>';
+            $xml .= '<FIELD_7>' . $this->field7 . '</FIELD_7>';
         }
         if ($this->field8) {
-            $xml .= '<FIELD_8>' . $this->field8 . '<FIELD_8>';
+            $xml .= '<FIELD_8>' . $this->field8 . '</FIELD_8>';
         }
         if ($this->field9) {
-            $xml .= '<FIELD_9>' . $this->field9 . '<FIELD_9>';
+            $xml .= '<FIELD_9>' . $this->field9 . '</FIELD_9>';
         }
         if ($this->field10) {
-            $xml .= '<FIELD_10>' . $this->field10 . '<FIELD_10>';
+            $xml .= '<FIELD_10>' . $this->field10 . '</FIELD_10>';
         }
         return $xml;
     }
