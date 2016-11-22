@@ -3,6 +3,7 @@ namespace Dandomain\Import;
 
 use Dandomain\ImportExportClientTrait;
 use Dandomain\Xml\ElementInterface;
+use Doctrine\Common\Collections\ArrayCollection;
 
 abstract class Import {
     use ImportExportClientTrait;
@@ -18,9 +19,9 @@ abstract class Import {
     protected $xmlEnd;
 
     /**
-     * @var ElementInterface[]
+     * @var ElementInterface[]|ArrayCollection
      */
-    protected $elements = [];
+    protected $elements;
 
     /**
      * The local path where the import file should be saved
@@ -44,6 +45,7 @@ abstract class Import {
     public function __construct($localPath, $globalUrl, $params = []) {
         $this->localPath = $localPath;
         $this->globalUrl = $globalUrl;
+        $this->elements = new ArrayCollection();
 
         $this->params = array_merge($this->params, $params);
     }
@@ -86,10 +88,31 @@ abstract class Import {
 
     /**
      * @param ElementInterface $element
+     * @return Import
      */
     public function addElement(ElementInterface $element) {
         $this->elements[] = $element;
+        return $this;
     }
+
+    /**
+     * @return ElementInterface[]|ArrayCollection
+     */
+    public function getElements()
+    {
+        return $this->elements;
+    }
+
+    /**
+     * @param ElementInterface[]|ArrayCollection $elements
+     * @return Import
+     */
+    public function setElements($elements)
+    {
+        $this->elements = $elements;
+        return $this;
+    }
+
 
     public function setUpdateOnly($val) {
         $this->params['updateonly'] = $val ? 1 : 0;
