@@ -48,9 +48,9 @@ class Product extends Element {
         $this->info = $info;
         $this->description = $description;
         $this->customFields = $customFields;
-        $this->categories = $categories;
-        $this->prices = $prices;
-        $this->manufacturers = $manufacturers;
+        $this->setCategories($categories);
+        $this->setPrices($prices);
+        $this->setManufacturers($manufacturers);
     }
 
     public function getXml()
@@ -206,6 +206,17 @@ class Product extends Element {
     }
 
     /**
+     * Adds a category element to the product
+     *
+     * @param Category $category
+     * @return Product
+     */
+    public function addCategory(Category $category) {
+        $this->categories[] = $category;
+        return $this;
+    }
+
+    /**
      * @return Category[]|ArrayCollection
      */
     public function getCategories()
@@ -219,7 +230,24 @@ class Product extends Element {
      */
     public function setCategories($categories)
     {
-        $this->categories = $categories;
+        if(empty($categories)) {
+            $this->categories = new ArrayCollection();
+        } elseif(is_array($categories)) {
+            $this->categories = new ArrayCollection($categories);
+        } else {
+            $this->categories = $categories;
+        }
+        return $this;
+    }
+
+    /**
+     * Adds a price element to the product
+     *
+     * @param Price $price
+     * @return Product
+     */
+    public function addPrice(Price $price) {
+        $this->prices[] = $price;
         return $this;
     }
 
@@ -237,7 +265,24 @@ class Product extends Element {
      */
     public function setPrices($prices)
     {
-        $this->prices = $prices;
+        if(empty($prices)) {
+            $this->prices = new ArrayCollection();
+        } elseif(is_array($prices)) {
+            $this->prices = new ArrayCollection($prices);
+        } else {
+            $this->prices = $prices;
+        }
+        return $this;
+    }
+
+    /**
+     * Adds a manufacturer element to the product
+     *
+     * @param Manufacturer $manufacturer
+     * @return Product
+     */
+    public function addManufacturer(Manufacturer $manufacturer) {
+        $this->manufacturers[] = $manufacturer;
         return $this;
     }
 
@@ -255,7 +300,13 @@ class Product extends Element {
      */
     public function setManufacturers($manufacturers)
     {
-        $this->manufacturers = $manufacturers;
+        if(empty($manufacturers)) {
+            $this->manufacturers = new ArrayCollection();
+        } elseif(is_array($manufacturers)) {
+            $this->manufacturers = new ArrayCollection($manufacturers);
+        } else {
+            $this->manufacturers = $manufacturers;
+        }
         return $this;
     }
 }
