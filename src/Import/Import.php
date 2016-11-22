@@ -71,9 +71,13 @@ abstract class Import {
     }
 
     /**
-     * @return Result
+     * @return Result|bool
      */
     public function import() {
+        if(!count($this->elements)) {
+            return false;
+        }
+
         $this->createImportFile();
 
         /**
