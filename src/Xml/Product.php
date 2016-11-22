@@ -72,21 +72,21 @@ class Product extends Element {
         if($this->customFields) {
             $xml .= '<CUSTOM_FIELDS>' . $this->customFields->getXml() . '</CUSTOM_FIELDS>';
         }
-        if($this->categories && !empty($this->categories)) {
+        if($this->categories && count($this->categories)) {
             $xml .= '<PRODUCT_CATEGORIES>';
             foreach ($this->categories as $category) {
                 $xml .= $category->getXml();
             }
             $xml .= '</PRODUCT_CATEGORIES>';
         }
-        if($this->prices && !empty($this->prices)) {
+        if($this->prices && count($this->prices)) {
             $xml .= '<PRICES>';
             foreach ($this->prices as $price) {
                 $xml .= $price->getXml();
             }
             $xml .= '</PRICES>';
         }
-        if($this->manufacturers && !empty($this->manufacturers)) {
+        if($this->manufacturers && count($this->manufacturers)) {
             $xml .= '<MANUFACTURERS>';
             foreach ($this->manufacturers as $manufacturer) {
                 $xml .= $manufacturer->getXml();
