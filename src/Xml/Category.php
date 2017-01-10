@@ -18,7 +18,7 @@ class Category extends Element {
     /** @var string */
     protected $name;
 
-    /** @var string */
+    /** @var bool */
     protected $hidden;
 
     /** @var int */
@@ -89,9 +89,7 @@ class Category extends Element {
         if($this->name) {
             $xml .= '<PROD_CAT_NAME>' . $this->name . '</PROD_CAT_NAME>';
         }
-        if($this->hidden) {
-            $xml .= '<PROD_CAT_HIDDEN>' . $this->hidden . '</PROD_CAT_HIDDEN>';
-        }
+        $xml .= '<PROD_CAT_HIDDEN>' . ($this->hidden ? 'True' : 'False') . '</PROD_CAT_HIDDEN>';
         if($this->sort) {
             $xml .= '<PROD_CAT_SORT>' . $this->sort . '</PROD_CAT_SORT>';
         }
