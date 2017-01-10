@@ -102,9 +102,7 @@ class Category extends Element {
         if($this->icon) {
             $xml .= '<PROD_CAT_ICON>' . $this->icon . '</PROD_CAT_ICON>';
         }
-        if($this->subCategorySymbol) {
-            $xml .= '<SUBCAT_SYMBOL>' . $this->subCategorySymbol . '</SUBCAT_SYMBOL>';
-        }
+        $xml .= '<SUBCAT_SYMBOL>' . ($this->subCategorySymbol ? $this->subCategorySymbol : '') . '</SUBCAT_SYMBOL>';
         if($this->image) {
             $xml .= '<PROD_CAT_IMAGE>' . $this->image . '</PROD_CAT_IMAGE>';
         }
