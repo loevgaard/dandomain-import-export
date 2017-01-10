@@ -97,7 +97,7 @@ class Category extends Element {
             $xml .= '<PROD_CAT_LINK>' . $this->link . '</PROD_CAT_LINK>';
         }
         if($this->description) {
-            $xml .= '<PROD_CAT_DESCRIPTION>' . $this->description . '</PROD_CAT_DESCRIPTION>';
+            $xml .= '<PROD_CAT_DESCRIPTION><![CDATA[' . $this->description . ']]></PROD_CAT_DESCRIPTION>';
         }
         if($this->icon) {
             $xml .= '<PROD_CAT_ICON>' . $this->icon . '</PROD_CAT_ICON>';
