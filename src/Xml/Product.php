@@ -8,6 +8,7 @@ use Dandomain\Xml\Product\Description;
 use Dandomain\Xml\Product\General;
 use Dandomain\Xml\Product\Info;
 use Dandomain\Xml\Product\Manufacturer;
+use Dandomain\Xml\Product\Media;
 use Dandomain\Xml\Product\Price;
 use Dandomain\Xml\Product\Stock;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -40,7 +41,10 @@ class Product extends Element {
     /** @var ArrayCollection|Manufacturer[] */
     protected $manufacturers;
 
-    public function __construct(General $general, Advanced $advanced = null, Stock $stock = null, Info $info = null, Description $description = null, CustomFields $customFields = null, $categories = null, $prices = null, $manufacturers = null)
+    /** @var ArrayCollection|Media[] */
+    protected $media;
+
+    public function __construct(General $general, Advanced $advanced = null, Stock $stock = null, Info $info = null, Description $description = null, CustomFields $customFields = null, $categories = null, $prices = null, $manufacturers = null, $media = null)
     {
         $this->general = $general;
         $this->advanced = $advanced;
@@ -51,6 +55,7 @@ class Product extends Element {
         $this->setCategories($categories);
         $this->setPrices($prices);
         $this->setManufacturers($manufacturers);
+        $this->setMedia($media);
     }
 
     public function getXml()
@@ -92,6 +97,13 @@ class Product extends Element {
                 $xml .= $manufacturer->getXml();
             }
             $xml .= '</MANUFACTURERS>';
+        }
+        if($this->media && count($this->media)) {
+            $xml .= '<PRODUCT_MEDIA>';
+            foreach ($this->media as $media) {
+                $xml .= $media->getXml();
+            }
+            $xml .= '</PRODUCT_MEDIA>';
         }
         $xml .= '</PRODUCT>';
         return $xml;
@@ -306,6 +318,30 @@ class Product extends Element {
             $this->manufacturers = new ArrayCollection($manufacturers);
         } else {
             $this->manufacturers = $manufacturers;
+        }
+        return $this;
+    }
+
+    /**
+     * @return Media[]|ArrayCollection
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param Media[]|ArrayCollection $media
+     * @return Product
+     */
+    public function setMedia($media)
+    {
+        if(empty($media)) {
+            $this->media = new ArrayCollection();
+        } elseif(is_array($media)) {
+            $this->media = new ArrayCollection($media);
+        } else {
+            $this->media = $media;
         }
         return $this;
     }
