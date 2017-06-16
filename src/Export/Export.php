@@ -72,4 +72,15 @@ class Export {
         unset($xml);
         @unlink($filename);
     }
+
+    /**
+     * Set the language id parameter
+     *
+     * @param int $languageId
+     * @return $this
+     */
+    public function setLanguageId($languageId) {
+        $this->params['langid'] = $languageId;
+        return $this;
+    }
 }
