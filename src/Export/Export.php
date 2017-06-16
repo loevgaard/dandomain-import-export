@@ -1,7 +1,6 @@
 <?php
 namespace Dandomain\Export;
 
-use Dandomain\Import\Import;
 use Dandomain\ImportExportClient;
 use Dandomain\ImportExportClientTrait;
 
@@ -48,12 +47,9 @@ class Export {
             echo "Downloading export file to\n$filename\n";
         }
 
-        $resource = fopen($filename, 'w');
-        $stream = \GuzzleHttp\Psr7\stream_for($resource);
         $client->get((string)$xml->FILE_URL, [
-            'sink' => $stream
+            'sink' => $filename
         ]);
-        fclose($resource);
 
         $elementTag = $lastTag = '';
         $xml = new \XMLReader();
