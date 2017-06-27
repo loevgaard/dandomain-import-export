@@ -24,6 +24,7 @@ class ImportExportClient extends GuzzleHttpClient implements ImportExportClientI
         return $this->get($url, [
             'connect_timeout' => 10,
             'timeout' => 3600, // 1 hour timeout
+            'verify' => false,
         ]);
     }
 
