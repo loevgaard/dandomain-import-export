@@ -1,9 +1,10 @@
 <?php
-namespace Dandomain\Xml\Product;
+namespace Loevgaard\DandomainImportExport\Xml\Product;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
-class Manufacturer extends Element {
+class Manufacturer extends Element
+{
     protected $id;
 
     public function __construct($id)

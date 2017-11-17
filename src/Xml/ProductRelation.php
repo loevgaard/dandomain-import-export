@@ -1,7 +1,8 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-class ProductRelation extends Element {
+class ProductRelation extends Element
+{
     /**
      * @var string
      */

@@ -1,7 +1,7 @@
 <?php
-namespace Dandomain\Xml\Product;
+namespace Loevgaard\DandomainImportExport\Xml\Product;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
 class Media extends Element
 {
@@ -32,13 +32,23 @@ class Media extends Element
     public function getXml()
     {
         $xml = '';
-        if($this->id) { $xml .= '<MEDIA_ID>' . $this->id . '</MEDIA_ID>'; }
-        if($this->name) { $xml .= '<MEDIA_NAME>' . $this->name . '</MEDIA_NAME>'; }
-        if($this->url) { $xml .= '<MEDIA_URL>' . $this->url . '</MEDIA_URL>'; }
-        if($this->altText) { $xml .= '<MEDIA_ALT_TEXT>' . $this->altText . '</MEDIA_ALT_TEXT>'; }
-        if($this->sort) { $xml .= '<MEDIA_SORT>' . $this->sort . '</MEDIA_SORT>'; }
+        if ($this->id) {
+            $xml .= '<MEDIA_ID>' . $this->id . '</MEDIA_ID>';
+        }
+        if ($this->name) {
+            $xml .= '<MEDIA_NAME>' . $this->name . '</MEDIA_NAME>';
+        }
+        if ($this->url) {
+            $xml .= '<MEDIA_URL>' . $this->url . '</MEDIA_URL>';
+        }
+        if ($this->altText) {
+            $xml .= '<MEDIA_ALT_TEXT>' . $this->altText . '</MEDIA_ALT_TEXT>';
+        }
+        if ($this->sort) {
+            $xml .= '<MEDIA_SORT>' . $this->sort . '</MEDIA_SORT>';
+        }
 
-        if($xml) {
+        if ($xml) {
             $xml = '<MEDIA>' . $xml . '</MEDIA>';
         }
 

@@ -1,7 +1,8 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-class Price extends Element {
+class Price extends Element
+{
     protected $productNumber;
     protected $currency;
     protected $b2bId;
@@ -37,31 +38,31 @@ class Price extends Element {
         $xml .= "<PRICE_PROD_NUM>{$this->productNumber}</PRICE_PROD_NUM>";
         $xml .= "<CURRENCY_CODE>{$this->currency}</CURRENCY_CODE>";
         $xml .= '<PRICE_B2B_ID>' . (int)$this->b2bId . '</PRICE_B2B_ID>';
-        if($this->amount) {
+        if ($this->amount) {
             $xml .= '<AMOUNT>' . (int)$this->amount . '</AMOUNT>';
         }
-        if($this->costPrice) {
+        if ($this->costPrice) {
             $xml .= '<PROD_COST_PRICE>' . $this->formatMoney($this->costPrice) . '</PROD_COST_PRICE>';
         }
-        if($this->unitPrice) {
+        if ($this->unitPrice) {
             $xml .= '<UNIT_PRICE>' . $this->formatMoney($this->unitPrice) . '</UNIT_PRICE>';
         }
-        if($this->profit) {
+        if ($this->profit) {
             $xml .= '<AVANCE>' . $this->formatMoney($this->profit) . '</AVANCE>';
         }
-        if($this->specialOfferPrice) {
+        if ($this->specialOfferPrice) {
             $xml .= '<SPECIAL_OFFER_PRICE>' . $this->formatMoney($this->specialOfferPrice) . '</SPECIAL_OFFER_PRICE>';
         }
-        if($this->periodId) {
+        if ($this->periodId) {
             $xml .= "<PRICE_PERIOD_ID>{$this->periodId}</PRICE_PERIOD_ID>";
         }
-        if($this->languageId) {
+        if ($this->languageId) {
             $xml .= '<LANGUAGE_ID>' . (int)$this->languageId . '</LANGUAGE_ID>';
         }
-        if($this->productName) {
+        if ($this->productName) {
             $xml .= "<PROD_NAME>{$this->productName}</PROD_NAME>";
         }
-        if($this->retailPrice) {
+        if ($this->retailPrice) {
             $xml .= '<PROD_RETAIL_PRICE>' . $this->formatMoney($this->retailPrice) . '</PROD_RETAIL_PRICE>';
         }
         $xml .= '</PRICE>';

@@ -1,8 +1,10 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-class Element implements ElementInterface {
-    public function getXml() {
+abstract class Element implements ElementInterface
+{
+    public function getXml() : string
+    {
         return '';
     }
 
@@ -12,7 +14,8 @@ class Element implements ElementInterface {
      * @param float $money
      * @return string
      */
-    protected function formatMoney($money) {
+    protected function formatMoney($money)
+    {
         return number_format($money, 2, ',', '');
     }
 }

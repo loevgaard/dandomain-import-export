@@ -1,75 +1,86 @@
 <?php
-namespace Dandomain\Xml\Product;
+namespace Loevgaard\DandomainImportExport\Xml\Product;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
 class Advanced extends Element
 {
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $vendorNumber;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $unitId;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $typeId;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $hidden;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $new;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $newPeriodId;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $frontPage;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $variantMasterId;
 
-    /** @var string */
-    protected $maillistExport;
+    /**
+     * @var string
+     */
+    protected $mailListExport;
 
-    /** @var string */
-    protected $toplistHidden;
+    /**
+     * @var string
+     */
+    protected $topListHidden;
 
-    /** @var int */
+    /**
+     * @var int
+     */
     protected $internalId;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $uniqueUrlName;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $barcodeNumber;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $googleFeedCategory;
 
-    /** @var string */
+    /**
+     * @var string
+     */
     protected $directLink;
 
-    public function __construct($vendorNumber = null, $unitId = null, $typeId = null, $hidden = null, $new = null, $newPeriodId = null, $frontPage = null, $variantMasterId = null, $maillistExport = null, $toplistHidden = null, $internalId = null, $uniqueUrlName = null, $barcodeNumber = null, $googleFeedCategory = null, $directLink = null)
-    {
-        $this->vendorNumber = $vendorNumber;
-        $this->unitId = $unitId;
-        $this->typeId = $typeId;
-        $this->hidden = $hidden;
-        $this->new = $new;
-        $this->newPeriodId = $newPeriodId;
-        $this->frontPage = $frontPage;
-        $this->variantMasterId = $variantMasterId;
-        $this->maillistExport = $maillistExport;
-        $this->toplistHidden = $toplistHidden;
-        $this->internalId = $internalId;
-        $this->uniqueUrlName = $uniqueUrlName;
-        $this->barcodeNumber = $barcodeNumber;
-        $this->googleFeedCategory = $googleFeedCategory;
-        $this->directLink = $directLink;
-    }
-
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->vendorNumber) {
@@ -96,11 +107,11 @@ class Advanced extends Element
         if ($this->variantMasterId) {
             $xml .= '<PROD_VAR_MASTER_ID>' . $this->variantMasterId . '</PROD_VAR_MASTER_ID>';
         }
-        if ($this->maillistExport) {
-            $xml .= '<MAILLIST_EXPORT>' . $this->maillistExport . '</MAILLIST_EXPORT>';
+        if ($this->mailListExport) {
+            $xml .= '<MAILLIST_EXPORT>' . $this->mailListExport . '</MAILLIST_EXPORT>';
         }
-        if ($this->toplistHidden) {
-            $xml .= '<TOPLIST_HIDDEN>' . $this->toplistHidden . '</TOPLIST_HIDDEN>';
+        if ($this->topListHidden) {
+            $xml .= '<TOPLIST_HIDDEN>' . $this->topListHidden . '</TOPLIST_HIDDEN>';
         }
         if ($this->internalId) {
             $xml .= '<INTERNAL_ID>' . $this->internalId . '</INTERNAL_ID>';
@@ -123,7 +134,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getVendorNumber()
+    public function getVendorNumber() : string
     {
         return $this->vendorNumber;
     }
@@ -132,7 +143,7 @@ class Advanced extends Element
      * @param string $vendorNumber
      * @return Advanced
      */
-    public function setVendorNumber($vendorNumber)
+    public function setVendorNumber($vendorNumber) : Advanced
     {
         $this->vendorNumber = $vendorNumber;
         return $this;
@@ -141,7 +152,7 @@ class Advanced extends Element
     /**
      * @return int
      */
-    public function getUnitId()
+    public function getUnitId() : int
     {
         return $this->unitId;
     }
@@ -150,7 +161,7 @@ class Advanced extends Element
      * @param int $unitId
      * @return Advanced
      */
-    public function setUnitId($unitId)
+    public function setUnitId($unitId) : Advanced
     {
         $this->unitId = $unitId;
         return $this;
@@ -159,7 +170,7 @@ class Advanced extends Element
     /**
      * @return int
      */
-    public function getTypeId()
+    public function getTypeId() : int
     {
         return $this->typeId;
     }
@@ -168,7 +179,7 @@ class Advanced extends Element
      * @param int $typeId
      * @return Advanced
      */
-    public function setTypeId($typeId)
+    public function setTypeId($typeId) : Advanced
     {
         $this->typeId = $typeId;
         return $this;
@@ -177,7 +188,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getHidden()
+    public function getHidden() : string
     {
         return $this->hidden;
     }
@@ -186,7 +197,7 @@ class Advanced extends Element
      * @param string $hidden
      * @return Advanced
      */
-    public function setHidden($hidden)
+    public function setHidden($hidden) : Advanced
     {
         $this->hidden = $hidden;
         return $this;
@@ -195,7 +206,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getNew()
+    public function getNew() : string
     {
         return $this->new;
     }
@@ -204,7 +215,7 @@ class Advanced extends Element
      * @param string $new
      * @return Advanced
      */
-    public function setNew($new)
+    public function setNew($new) : Advanced
     {
         $this->new = $new;
         return $this;
@@ -213,7 +224,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getNewPeriodId()
+    public function getNewPeriodId() : string
     {
         return $this->newPeriodId;
     }
@@ -222,7 +233,7 @@ class Advanced extends Element
      * @param string $newPeriodId
      * @return Advanced
      */
-    public function setNewPeriodId($newPeriodId)
+    public function setNewPeriodId($newPeriodId) : Advanced
     {
         $this->newPeriodId = $newPeriodId;
         return $this;
@@ -231,7 +242,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getFrontPage()
+    public function getFrontPage() : string
     {
         return $this->frontPage;
     }
@@ -240,7 +251,7 @@ class Advanced extends Element
      * @param string $frontPage
      * @return Advanced
      */
-    public function setFrontPage($frontPage)
+    public function setFrontPage($frontPage) : Advanced
     {
         $this->frontPage = $frontPage;
         return $this;
@@ -249,7 +260,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getVariantMasterId()
+    public function getVariantMasterId() : string
     {
         return $this->variantMasterId;
     }
@@ -258,7 +269,7 @@ class Advanced extends Element
      * @param string $variantMasterId
      * @return Advanced
      */
-    public function setVariantMasterId($variantMasterId)
+    public function setVariantMasterId($variantMasterId) : Advanced
     {
         $this->variantMasterId = $variantMasterId;
         return $this;
@@ -267,43 +278,43 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getMaillistExport()
+    public function getMailListExport() : string
     {
-        return $this->maillistExport;
+        return $this->mailListExport;
     }
 
     /**
-     * @param string $maillistExport
+     * @param string $mailListExport
      * @return Advanced
      */
-    public function setMaillistExport($maillistExport)
+    public function setMailListExport($mailListExport) : Advanced
     {
-        $this->maillistExport = $maillistExport;
+        $this->mailListExport = $mailListExport;
         return $this;
     }
 
     /**
      * @return string
      */
-    public function getToplistHidden()
+    public function getTopListHidden() : string
     {
-        return $this->toplistHidden;
+        return $this->topListHidden;
     }
 
     /**
-     * @param string $toplistHidden
+     * @param string $topListHidden
      * @return Advanced
      */
-    public function setToplistHidden($toplistHidden)
+    public function setTopListHidden($topListHidden) : Advanced
     {
-        $this->toplistHidden = $toplistHidden;
+        $this->topListHidden = $topListHidden;
         return $this;
     }
 
     /**
      * @return int
      */
-    public function getInternalId()
+    public function getInternalId() : string
     {
         return $this->internalId;
     }
@@ -312,7 +323,7 @@ class Advanced extends Element
      * @param int $internalId
      * @return Advanced
      */
-    public function setInternalId($internalId)
+    public function setInternalId($internalId) : Advanced
     {
         $this->internalId = $internalId;
         return $this;
@@ -321,7 +332,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getUniqueUrlName()
+    public function getUniqueUrlName() : string
     {
         return $this->uniqueUrlName;
     }
@@ -330,7 +341,7 @@ class Advanced extends Element
      * @param string $uniqueUrlName
      * @return Advanced
      */
-    public function setUniqueUrlName($uniqueUrlName)
+    public function setUniqueUrlName($uniqueUrlName) : Advanced
     {
         $this->uniqueUrlName = $uniqueUrlName;
         return $this;
@@ -339,7 +350,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getBarcodeNumber()
+    public function getBarcodeNumber() : string
     {
         return $this->barcodeNumber;
     }
@@ -348,7 +359,7 @@ class Advanced extends Element
      * @param string $barcodeNumber
      * @return Advanced
      */
-    public function setBarcodeNumber($barcodeNumber)
+    public function setBarcodeNumber($barcodeNumber) : Advanced
     {
         $this->barcodeNumber = $barcodeNumber;
         return $this;
@@ -357,7 +368,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getGoogleFeedCategory()
+    public function getGoogleFeedCategory() : string
     {
         return $this->googleFeedCategory;
     }
@@ -366,7 +377,7 @@ class Advanced extends Element
      * @param string $googleFeedCategory
      * @return Advanced
      */
-    public function setGoogleFeedCategory($googleFeedCategory)
+    public function setGoogleFeedCategory($googleFeedCategory) : Advanced
     {
         $this->googleFeedCategory = $googleFeedCategory;
         return $this;
@@ -375,7 +386,7 @@ class Advanced extends Element
     /**
      * @return string
      */
-    public function getDirectLink()
+    public function getDirectLink() : string
     {
         return $this->directLink;
     }
@@ -384,7 +395,7 @@ class Advanced extends Element
      * @param string $directLink
      * @return Advanced
      */
-    public function setDirectLink($directLink)
+    public function setDirectLink($directLink) : Advanced
     {
         $this->directLink = $directLink;
         return $this;

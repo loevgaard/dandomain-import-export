@@ -1,10 +1,10 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-use Dandomain\Xml\Category\ParentCategory;
-use Doctrine\Common\Collections\ArrayCollection;
+use Loevgaard\DandomainImportExport\Xml\Category\ParentCategory;
 
-class Category extends Element {
+class Category extends Element
+{
     /**
      * This is the category number within the Dandomain interface
      *
@@ -54,7 +54,7 @@ class Category extends Element {
     /** @var string */
     protected $uniqueUrlName;
 
-    /** @var ArrayCollection|ParentCategory[] */
+    /** @var ParentCategory[] */
     protected $parentCategories;
 
     /** @var string */
@@ -86,42 +86,42 @@ class Category extends Element {
         $xml = '<PRODUCT_CATEGORY>';
         $xml .= '<PROD_CAT_ID>' . $this->id . '</PROD_CAT_ID>';
         $xml .= '<LANGUAGE_ID>' . $this->languageId . '</LANGUAGE_ID>';
-        if($this->name) {
+        if ($this->name) {
             $xml .= '<PROD_CAT_NAME>' . $this->name . '</PROD_CAT_NAME>';
         }
         $xml .= '<PROD_CAT_HIDDEN>' . ($this->hidden ? 'True' : 'False') . '</PROD_CAT_HIDDEN>';
-        if($this->sort) {
+        if ($this->sort) {
             $xml .= '<PROD_CAT_SORT>' . $this->sort . '</PROD_CAT_SORT>';
         }
-        if($this->link) {
+        if ($this->link) {
             $xml .= '<PROD_CAT_LINK>' . $this->link . '</PROD_CAT_LINK>';
         }
-        if($this->description) {
+        if ($this->description) {
             $xml .= '<PROD_CAT_DESCRIPTION><![CDATA[' . $this->description . ']]></PROD_CAT_DESCRIPTION>';
         }
-        if($this->icon) {
+        if ($this->icon) {
             $xml .= '<PROD_CAT_ICON>' . $this->icon . '</PROD_CAT_ICON>';
         }
         $xml .= '<SUBCAT_SYMBOL>' . ($this->subCategorySymbol ? $this->subCategorySymbol : '') . '</SUBCAT_SYMBOL>';
-        if($this->image) {
+        if ($this->image) {
             $xml .= '<PROD_CAT_IMAGE>' . $this->image . '</PROD_CAT_IMAGE>';
         }
-        if($this->metaKeywords) {
+        if ($this->metaKeywords) {
             $xml .= '<META_KEYWORDS>' . $this->metaKeywords . '</META_KEYWORDS>';
         }
-        if($this->metaDescription) {
+        if ($this->metaDescription) {
             $xml .= '<META_DESCRIPTION>' . $this->metaDescription . '</META_DESCRIPTION>';
         }
-        if($this->title) {
+        if ($this->title) {
             $xml .= '<TITLE>' . $this->title . '</TITLE>';
         }
-        if($this->internalId) {
+        if ($this->internalId) {
             $xml .= '<INTERNAL_ID>' . $this->internalId . '</INTERNAL_ID>';
         }
-        if($this->uniqueUrlName) {
+        if ($this->uniqueUrlName) {
             $xml .= '<PROD_CAT_UNIQUE_URL_NAME>' . $this->uniqueUrlName . '</PROD_CAT_UNIQUE_URL_NAME>';
         }
-        if($this->directLink) {
+        if ($this->directLink) {
             $xml .= '<DIRECT_LINK>' . $this->directLink . '</DIRECT_LINK>';
         }
         $xml .= '<PARENT_CATEGORIES>';

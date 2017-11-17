@@ -1,12 +1,24 @@
 <?php
-namespace Dandomain\Import;
+namespace Loevgaard\DandomainImportExport\Import;
 
-use Dandomain\ImportExportClientTrait;
-use Dandomain\Xml\ElementInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
+use Loevgaard\DandomainImportExport\Client\ClientTrait;
+use Loevgaard\DandomainImportExport\ImportExport\PropertiesTrait;
+use Loevgaard\DandomainImportExport\Xml\ElementInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-abstract class Import {
-    use ImportExportClientTrait;
+abstract class Import implements ImportInterface
+{
+    use ClientTrait;
+    use PropertiesTrait;
+
+    /**
+     * This is the public URL that corresponds to the $path, i.e. https://your-project.com/imports
+     *
+     * @var string
+     */
+    protected $url;
 
     /**
      * @var string
@@ -19,45 +31,53 @@ abstract class Import {
     protected $xmlEnd;
 
     /**
-     * @var ElementInterface[]|ArrayCollection
+     * @var ElementInterface[]
      */
     protected $elements;
 
-    /**
-     * The local path where the import file should be saved
-     *
-     * @var string
-     */
-    protected $localPath;
-
-    /**
-     * The global url where the import file can be accessed by Dandomain
-     *
-     * @var string
-     */
-    protected $globalUrl;
-
-    /**
-     * @var array
-     */
-    protected $params = [];
-
-    public function __construct($localPath, $globalUrl, $params = []) {
-        $this->localPath = $localPath;
-        $this->globalUrl = $globalUrl;
-        $this->elements = new ArrayCollection();
-
-        $this->params = array_merge($this->params, $params);
+    public function __construct(string $dandomainUrl, string $username, string $password, string $path, string $url)
+    {
+        $this->dandomainUrl = $this->trimUrlOrPath($dandomainUrl);
+        $this->username = $username;
+        $this->password = $password;
+        $this->path = $this->trimUrlOrPath($path);
+        $this->url = $this->trimUrlOrPath($url);
+        $this->elements = [];
     }
 
     /**
-     * Returns the local path of the file
-     *
-     * @return string
+     * @inheritdoc
      */
-    public function createImportFile() {
-        @unlink($this->localPath);
-        $fp = fopen($this->localPath, 'w');
+    public function import(array $options = []) : ImportResultInterface
+    {
+        $importResult = new ImportResult();
+
+        // if there are no element we will just return now
+        if (!count($this->elements)) {
+            return $importResult;
+        }
+
+        // resolve options
+        $resolver = new OptionsResolver();
+        $this->configureOptions($resolver);
+
+        $options = $resolver->resolve($options);
+
+        // set filename
+        if ($options[ImportInterface::OPTION_FILENAME]) {
+            $filename = $options[ImportInterface::OPTION_FILENAME];
+        } else {
+            $filename = uniqid('import-').'.xml';
+        }
+
+        $filePath = $this->path.'/'.$filename;
+        $fileUrl = $this->url.'/'.$filename;
+
+        $importResult->setFilePath($filePath)->setFileUrl($fileUrl);
+
+        // populate file with data
+        @unlink($filePath);
+        $fp = fopen($filePath, 'w');
         fwrite($fp, $this->xmlStart);
 
         foreach ($this->elements as $element) {
@@ -67,58 +87,69 @@ abstract class Import {
         fwrite($fp, $this->xmlEnd);
         fclose($fp);
 
-        return $this->localPath;
-    }
+        // create import url
+        $importUrl = sprintf(
+            '%s/admin/modules/importexport/import_v6.aspx?response=1&user=%s&password=%s&file=%s',
+            $this->dandomainUrl,
+            $this->username,
+            $this->password,
+            rawurlencode($fileUrl)
+        );
 
-    /**
-     * @return Result|bool
-     */
-    public function import() {
-        if(!count($this->elements)) {
-            return false;
+        if ($options[ImportInterface::OPTION_ONLY_UPDATE]) {
+            $importUrl .= '&updateonly=1';
         }
 
-        $this->createImportFile();
+        $client = $this->getClient();
 
-        /**
-         * @todo this depends on the guzzle http client, which it should not
-         * @todo move the getBody()->getContents() to the client instead
-         */
-        $importResult = new Result($this->getClient()->import($this->globalUrl, $this->params)->getBody()->getContents());
+        $request = new Request('get', $importUrl);
+        $importResult->setRequest($request);
 
-        @unlink($this->localPath);
+        $response = $client->send($request, $options[ImportInterface::OPTION_CLIENT_OPTIONS]);
+        $importResult->setResponse($response);
+
+        $importResult->parseResponse($response);
+
         return $importResult;
     }
 
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            ImportInterface::OPTION_CLEAN_UP => false,
+            ImportInterface::OPTION_DRY_RUN => false,
+            ImportInterface::OPTION_FILENAME => '',
+            ImportInterface::OPTION_ONLY_UPDATE => false,
+            ImportInterface::OPTION_CLIENT_OPTIONS => [
+                RequestOptions::CONNECT_TIMEOUT => 30,
+                RequestOptions::TIMEOUT => 3600,
+                RequestOptions::HTTP_ERRORS => false,
+            ],
+        ]);
+
+        $resolver->setAllowedTypes(ImportInterface::OPTION_CLEAN_UP, 'bool');
+        $resolver->setAllowedTypes(ImportInterface::OPTION_DRY_RUN, 'bool');
+        $resolver->setAllowedTypes(ImportInterface::OPTION_FILENAME, 'string');
+        $resolver->setAllowedTypes(ImportInterface::OPTION_ONLY_UPDATE, 'bool');
+        $resolver->setAllowedTypes(ImportInterface::OPTION_CLIENT_OPTIONS, 'array');
+    }
+
     /**
-     * @param ElementInterface $element
-     * @return Import
+     * @inheritdoc
      */
-    public function addElement(ElementInterface $element) {
+    public function addElement(ElementInterface $element) : ImportInterface
+    {
         $this->elements[] = $element;
+
         return $this;
     }
 
     /**
-     * @return ElementInterface[]|ArrayCollection
+     * @param string $str
+     * @return string
      */
-    public function getElements()
+    protected function trimUrlOrPath(string $str) : string
     {
-        return $this->elements;
-    }
-
-    /**
-     * @param ElementInterface[]|ArrayCollection $elements
-     * @return Import
-     */
-    public function setElements($elements)
-    {
-        $this->elements = $elements;
-        return $this;
-    }
-
-
-    public function setUpdateOnly($val) {
-        $this->params['updateonly'] = $val ? 1 : 0;
+        return rtrim($str, '/');
     }
 }

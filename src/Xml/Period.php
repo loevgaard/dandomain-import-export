@@ -1,7 +1,8 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-class Period extends Element {
+class Period extends Element
+{
     /**
      * @var string
      */
@@ -33,10 +34,10 @@ class Period extends Element {
         $this->title        = $title;
         $this->disabled     = $disabled;
 
-        if(is_string($startDate)) {
+        if (is_string($startDate)) {
             $startDate = new \DateTime($startDate);
         }
-        if(is_string($endDate)) {
+        if (is_string($endDate)) {
             $endDate= new \DateTime($endDate);
         }
 
@@ -48,16 +49,16 @@ class Period extends Element {
     {
         $xml = '<PERIOD>';
         $xml .= "<ID>{$this->id}</ID>";
-        if($this->title) {
+        if ($this->title) {
             $xml .= '<TITLE>' . $this->title. '</TITLE>';
         }
-        if($this->startDate) {
+        if ($this->startDate) {
             $xml .= '<START_DATE>' . $this->startDate->format('d-m-Y') . '</START_DATE>';
         }
-        if($this->endDate) {
+        if ($this->endDate) {
             $xml .= '<END_DATE>' . $this->endDate->format('d-m-Y') . '</END_DATE>';
         }
-        if($this->disabled) {
+        if ($this->disabled) {
             $xml .= '<DISABLED>' . ($this->disabled ? 'True' : 'False') . '</DISABLED>';
         }
         $xml .= '</PERIOD>';
@@ -137,7 +138,7 @@ class Period extends Element {
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isDisabled()
     {
@@ -145,7 +146,7 @@ class Period extends Element {
     }
 
     /**
-     * @param boolean $disabled
+     * @param bool $disabled
      * @return Period
      */
     public function setDisabled($disabled)

@@ -1,19 +1,19 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-use Dandomain\Xml\Product\Advanced;
-use Dandomain\Xml\Product\Category;
-use Dandomain\Xml\Product\CustomFields;
-use Dandomain\Xml\Product\Description;
-use Dandomain\Xml\Product\General;
-use Dandomain\Xml\Product\Info;
-use Dandomain\Xml\Product\Manufacturer;
-use Dandomain\Xml\Product\Media;
-use Dandomain\Xml\Product\Price;
-use Dandomain\Xml\Product\Stock;
-use Doctrine\Common\Collections\ArrayCollection;
+use Loevgaard\DandomainImportExport\Xml\Product\Advanced;
+use Loevgaard\DandomainImportExport\Xml\Product\Category;
+use Loevgaard\DandomainImportExport\Xml\Product\CustomFields;
+use Loevgaard\DandomainImportExport\Xml\Product\Description;
+use Loevgaard\DandomainImportExport\Xml\Product\General;
+use Loevgaard\DandomainImportExport\Xml\Product\Info;
+use Loevgaard\DandomainImportExport\Xml\Product\Manufacturer;
+use Loevgaard\DandomainImportExport\Xml\Product\Media;
+use Loevgaard\DandomainImportExport\Xml\Product\Price;
+use Loevgaard\DandomainImportExport\Xml\Product\Stock;
 
-class Product extends Element {
+class Product extends Element
+{
     /** @var General */
     protected $general;
 
@@ -32,16 +32,16 @@ class Product extends Element {
     /** @var CustomFields */
     protected $customFields;
 
-    /** @var ArrayCollection|Category[] */
+    /** @var Category[] */
     protected $categories;
 
-    /** @var ArrayCollection|Price[] */
+    /** @var Price[] */
     protected $prices;
 
-    /** @var ArrayCollection|Manufacturer[] */
+    /** @var Manufacturer[] */
     protected $manufacturers;
 
-    /** @var ArrayCollection|Media[] */
+    /** @var Media[] */
     protected $media;
 
     public function __construct(General $general, Advanced $advanced = null, Stock $stock = null, Info $info = null, Description $description = null, CustomFields $customFields = null, $categories = null, $prices = null, $manufacturers = null, $media = null)
@@ -62,43 +62,43 @@ class Product extends Element {
     {
         $xml = '<PRODUCT>';
         $xml .= '<GENERAL>' . $this->general->getXml() . '</GENERAL>';
-        if($this->advanced) {
+        if ($this->advanced) {
             $xml .= '<ADVANCED>' . $this->advanced->getXml() . '</ADVANCED>';
         }
-        if($this->stock) {
+        if ($this->stock) {
             $xml .= '<STOCK>' . $this->stock->getXml() . '</STOCK>';
         }
-        if($this->info) {
+        if ($this->info) {
             $xml .= '<INFO>' . $this->info->getXml() . '</INFO>';
         }
-        if($this->description) {
+        if ($this->description) {
             $xml .= '<DESCRIPTION>' . $this->description->getXml() . '</DESCRIPTION>';
         }
-        if($this->customFields) {
+        if ($this->customFields) {
             $xml .= '<CUSTOM_FIELDS>' . $this->customFields->getXml() . '</CUSTOM_FIELDS>';
         }
-        if($this->categories && count($this->categories)) {
+        if ($this->categories && count($this->categories)) {
             $xml .= '<PRODUCT_CATEGORIES>';
             foreach ($this->categories as $category) {
                 $xml .= $category->getXml();
             }
             $xml .= '</PRODUCT_CATEGORIES>';
         }
-        if($this->prices && count($this->prices)) {
+        if ($this->prices && count($this->prices)) {
             $xml .= '<PRICES>';
             foreach ($this->prices as $price) {
                 $xml .= $price->getXml();
             }
             $xml .= '</PRICES>';
         }
-        if($this->manufacturers && count($this->manufacturers)) {
+        if ($this->manufacturers && count($this->manufacturers)) {
             $xml .= '<MANUFACTURERS>';
             foreach ($this->manufacturers as $manufacturer) {
                 $xml .= $manufacturer->getXml();
             }
             $xml .= '</MANUFACTURERS>';
         }
-        if($this->media && count($this->media)) {
+        if ($this->media && count($this->media)) {
             $xml .= '<PRODUCT_MEDIA>';
             foreach ($this->media as $media) {
                 $xml .= $media->getXml();
@@ -223,13 +223,14 @@ class Product extends Element {
      * @param Category $category
      * @return Product
      */
-    public function addCategory(Category $category) {
+    public function addCategory(Category $category)
+    {
         $this->categories[] = $category;
         return $this;
     }
 
     /**
-     * @return Category[]|ArrayCollection
+     * @return Category[]
      */
     public function getCategories()
     {
@@ -237,18 +238,12 @@ class Product extends Element {
     }
 
     /**
-     * @param Category[]|ArrayCollection $categories
+     * @param Category[] $categories
      * @return Product
      */
-    public function setCategories($categories)
+    public function setCategories(array $categories = [])
     {
-        if(empty($categories)) {
-            $this->categories = new ArrayCollection();
-        } elseif(is_array($categories)) {
-            $this->categories = new ArrayCollection($categories);
-        } else {
-            $this->categories = $categories;
-        }
+        $this->categories = $categories;
         return $this;
     }
 
@@ -258,13 +253,14 @@ class Product extends Element {
      * @param Price $price
      * @return Product
      */
-    public function addPrice(Price $price) {
+    public function addPrice(Price $price)
+    {
         $this->prices[] = $price;
         return $this;
     }
 
     /**
-     * @return Price[]|ArrayCollection
+     * @return Price[]
      */
     public function getPrices()
     {
@@ -272,18 +268,12 @@ class Product extends Element {
     }
 
     /**
-     * @param Price[]|ArrayCollection $prices
+     * @param Price[] $prices
      * @return Product
      */
-    public function setPrices($prices)
+    public function setPrices(array $prices = [])
     {
-        if(empty($prices)) {
-            $this->prices = new ArrayCollection();
-        } elseif(is_array($prices)) {
-            $this->prices = new ArrayCollection($prices);
-        } else {
-            $this->prices = $prices;
-        }
+        $this->prices = $prices;
         return $this;
     }
 
@@ -293,13 +283,14 @@ class Product extends Element {
      * @param Manufacturer $manufacturer
      * @return Product
      */
-    public function addManufacturer(Manufacturer $manufacturer) {
+    public function addManufacturer(Manufacturer $manufacturer)
+    {
         $this->manufacturers[] = $manufacturer;
         return $this;
     }
 
     /**
-     * @return Manufacturer[]|ArrayCollection
+     * @return Manufacturer[]
      */
     public function getManufacturers()
     {
@@ -307,23 +298,17 @@ class Product extends Element {
     }
 
     /**
-     * @param Manufacturer[]|ArrayCollection $manufacturers
+     * @param Manufacturer[] $manufacturers
      * @return Product
      */
-    public function setManufacturers($manufacturers)
+    public function setManufacturers(array $manufacturers = [])
     {
-        if(empty($manufacturers)) {
-            $this->manufacturers = new ArrayCollection();
-        } elseif(is_array($manufacturers)) {
-            $this->manufacturers = new ArrayCollection($manufacturers);
-        } else {
-            $this->manufacturers = $manufacturers;
-        }
+        $this->manufacturers = $manufacturers;
         return $this;
     }
 
     /**
-     * @return Media[]|ArrayCollection
+     * @return Media[]
      */
     public function getMedia()
     {
@@ -331,18 +316,12 @@ class Product extends Element {
     }
 
     /**
-     * @param Media[]|ArrayCollection $media
+     * @param Media[] $media
      * @return Product
      */
-    public function setMedia($media)
+    public function setMedia(array $media = [])
     {
-        if(empty($media)) {
-            $this->media = new ArrayCollection();
-        } elseif(is_array($media)) {
-            $this->media = new ArrayCollection($media);
-        } else {
-            $this->media = $media;
-        }
+        $this->media = $media;
         return $this;
     }
 }

@@ -1,13 +1,18 @@
 <?php
-namespace Dandomain\Xml\Category;
+namespace Loevgaard\DandomainImportExport\Xml\Category;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
-class ParentCategory extends Element {
-    /** @var int */
+class ParentCategory extends Element
+{
+    /**
+     * @var int
+     */
     protected $id;
 
-    /** @var boolean */
+    /**
+     * @var bool
+     */
     protected $default;
 
     public function __construct($id, $default = false)
@@ -16,17 +21,15 @@ class ParentCategory extends Element {
         $this->default  = $default;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
-        $priority = $this->default ? 1 : 0;
-        $xml = '<PARENT_CAT_ID priority="' . $priority . '">' . $this->id . '</PARENT_CAT_ID>';
-        return $xml;
+        return '<PARENT_CAT_ID priority="' . ($this->default ? 1 : 0) . '">' . $this->id . '</PARENT_CAT_ID>';
     }
 
     /**
      * @return int
      */
-    public function getId()
+    public function getId() : int
     {
         return $this->id;
     }
@@ -35,27 +38,29 @@ class ParentCategory extends Element {
      * @param int $id
      * @return ParentCategory
      */
-    public function setId($id)
+    public function setId(int $id) : self
     {
         $this->id = $id;
+
         return $this;
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
-    public function isDefault()
+    public function isDefault() : bool
     {
         return $this->default;
     }
 
     /**
-     * @param boolean $default
+     * @param bool $default
      * @return ParentCategory
      */
-    public function setDefault($default)
+    public function setDefault(bool $default)
     {
         $this->default = $default;
+
         return $this;
     }
 }

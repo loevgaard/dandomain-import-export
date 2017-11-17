@@ -1,8 +1,11 @@
 <?php
-namespace Dandomain\Xml;
+namespace Loevgaard\DandomainImportExport\Xml;
 
-interface ElementInterface {
+interface ElementInterface
+{
     /**
+     * Will return the XML string for this element
+     *
      * @return string
      */
     public function getXml();

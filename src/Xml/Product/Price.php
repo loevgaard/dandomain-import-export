@@ -1,7 +1,7 @@
 <?php
-namespace Dandomain\Xml\Product;
+namespace Loevgaard\DandomainImportExport\Xml\Product;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
 class Price extends Element
 {

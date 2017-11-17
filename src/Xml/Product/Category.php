@@ -1,13 +1,14 @@
 <?php
-namespace Dandomain\Xml\Product;
+namespace Loevgaard\DandomainImportExport\Xml\Product;
 
-use Dandomain\Xml\Element;
+use Loevgaard\DandomainImportExport\Xml\Element;
 
-class Category extends Element {
+class Category extends Element
+{
     /** @var int */
     protected $id;
 
-    /** @var boolean */
+    /** @var bool */
     protected $default;
 
     public function __construct($id, $default = null)
@@ -41,7 +42,7 @@ class Category extends Element {
     }
 
     /**
-     * @return boolean
+     * @return bool
      */
     public function isDefault()
     {
@@ -49,7 +50,7 @@ class Category extends Element {
     }
 
     /**
-     * @param boolean $default
+     * @param bool $default
      * @return Category
      */
     public function setDefault($default)
