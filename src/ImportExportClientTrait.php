@@ -1,8 +1,6 @@
 <?php
 namespace Dandomain;
 
-use Dandomain\ImportExportClient;
-
 trait ImportExportClientTrait {
     /**
      * @var ImportExportClient

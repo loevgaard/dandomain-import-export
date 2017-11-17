@@ -84,7 +84,7 @@ abstract class Import {
          * @todo this depends on the guzzle http client, which it should not
          * @todo move the getBody()->getContents() to the client instead
          */
-        $importResult = new Result($this->getClient()->import($this->globalUrl)->getBody()->getContents());
+        $importResult = new Result($this->getClient()->import($this->globalUrl, $this->params)->getBody()->getContents());
 
         @unlink($this->localPath);
         return $importResult;
