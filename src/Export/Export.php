@@ -76,6 +76,18 @@ abstract class Export implements ExportInterface
             $url .= '&langid='.$options[ExportInterface::OPTION_LANGUAGE_ID];
         }
 
+        if ($options[ExportInterface::OPTION_START_DATE]) {
+            /** @var \DateTimeInterface $startDate */
+            $startDate = $options[ExportInterface::OPTION_START_DATE];
+            $url .= '&startdate='.$startDate->format('d-m-Y');
+        }
+
+        if ($options[ExportInterface::OPTION_END_DATE]) {
+            /** @var \DateTimeInterface $endDate */
+            $endDate = $options[ExportInterface::OPTION_END_DATE];
+            $url .= '&enddate='.$endDate->format('d-m-Y');
+        }
+
         $client = $this->getClient();
 
         $exportRequest = new Request('get', $url);
@@ -133,13 +145,19 @@ abstract class Export implements ExportInterface
         $resolver
             ->setDefaults([
                 ExportInterface::OPTION_CLEAN_UP => false,
-                ExportInterface::OPTION_FILENAME => '',
-                ExportInterface::OPTION_LANGUAGE_ID => 0,
+            ])
+            ->setDefined([
+                ExportInterface::OPTION_FILENAME,
+                ExportInterface::OPTION_LANGUAGE_ID,
+                ExportInterface::OPTION_START_DATE,
+                ExportInterface::OPTION_END_DATE
             ])
         ;
 
         $resolver->setAllowedTypes(ExportInterface::OPTION_CLEAN_UP, 'bool');
         $resolver->setAllowedTypes(ExportInterface::OPTION_FILENAME, 'string');
         $resolver->setAllowedTypes(ExportInterface::OPTION_LANGUAGE_ID, 'int');
+        $resolver->setAllowedTypes(ExportInterface::OPTION_START_DATE, \DateTimeInterface::class);
+        $resolver->setAllowedTypes(ExportInterface::OPTION_END_DATE, \DateTimeInterface::class);
     }
 }

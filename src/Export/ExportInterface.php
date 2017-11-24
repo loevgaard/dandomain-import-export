@@ -26,6 +26,16 @@ interface ExportInterface
     const OPTION_EXPORT_ID = 'exportId';
 
     /**
+     * The start date for exports using date intervals
+     */
+    const OPTION_START_DATE = 'startDate';
+
+    /**
+     * The end date for exports using date intervals
+     */
+    const OPTION_END_DATE = 'endDate';
+
+    /**
      * @param string $dandomainUrl URL of your Dandomain webshop
      * @param string $username The username for your webshop
      * @param string $password The password for your webshop
