@@ -11,6 +11,16 @@ class ExportResult implements ExportResultInterface
     /**
      * @var RequestInterface
      */
+    protected $exportRequest;
+
+    /**
+     * @var ResponseInterface
+     */
+    protected $exportResponse;
+
+    /**
+     * @var RequestInterface
+     */
     protected $request;
 
     /**
@@ -18,6 +28,48 @@ class ExportResult implements ExportResultInterface
      */
     protected $response;
 
+    /**
+     * The file path of the exported file
+     *
+     * @var string
+     */
+    protected $filePath;
+
+    /**
+     * @return RequestInterface
+     */
+    public function getExportRequest(): ?RequestInterface
+    {
+        return $this->exportRequest;
+    }
+
+    /**
+     * @param RequestInterface $exportRequest
+     * @return ExportResultInterface
+     */
+    public function setExportRequest(RequestInterface $exportRequest) : ExportResultInterface
+    {
+        $this->exportRequest = $exportRequest;
+        return $this;
+    }
+
+    /**
+     * @return ResponseInterface
+     */
+    public function getExportResponse(): ?ResponseInterface
+    {
+        return $this->exportResponse;
+    }
+
+    /**
+     * @param ResponseInterface $exportResponse
+     * @return ExportResultInterface
+     */
+    public function setExportResponse(ResponseInterface $exportResponse) : ExportResultInterface
+    {
+        $this->exportResponse = $exportResponse;
+        return $this;
+    }
 
     public function getRequest(): ?RequestInterface
     {
@@ -40,6 +92,24 @@ class ExportResult implements ExportResultInterface
     {
         $this->response = $response;
 
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFilePath(): ?string
+    {
+        return $this->filePath;
+    }
+
+    /**
+     * @param string $filePath
+     * @return ExportResultInterface
+     */
+    public function setFilePath(string $filePath) : ExportResultInterface
+    {
+        $this->filePath = $filePath;
         return $this;
     }
 }

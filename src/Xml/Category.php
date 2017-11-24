@@ -81,7 +81,7 @@ class Category extends Element
         $this->directLink           = $directLink;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PRODUCT_CATEGORY>';
         $xml .= '<PROD_CAT_ID>' . $this->id . '</PROD_CAT_ID>';

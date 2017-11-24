@@ -58,7 +58,7 @@ class Product extends Element
         $this->setMedia($media);
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PRODUCT>';
         $xml .= '<GENERAL>' . $this->general->getXml() . '</GENERAL>';

@@ -45,7 +45,7 @@ class Period extends Element
         $this->endDate      = $endDate;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PERIOD>';
         $xml .= "<ID>{$this->id}</ID>";

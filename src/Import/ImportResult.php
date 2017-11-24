@@ -1,6 +1,7 @@
 <?php
 namespace Loevgaard\DandomainImportExport\Import;
 
+use Loevgaard\DandomainImportExport\ImportExport\ResultInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 
@@ -105,7 +106,7 @@ class ImportResult implements ImportResultInterface
         return $this->request;
     }
 
-    public function setRequest(RequestInterface $request) : ImportResultInterface
+    public function setRequest(RequestInterface $request) : ResultInterface
     {
         $this->request = $request;
 
@@ -117,7 +118,7 @@ class ImportResult implements ImportResultInterface
         return $this->response;
     }
 
-    public function setResponse(ResponseInterface $response) : ImportResultInterface
+    public function setResponse(ResponseInterface $response) : ResultInterface
     {
         $this->response = $response;
 

@@ -34,7 +34,7 @@ class ProductRelation extends Element
     /**
      * @return string
      */
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PRODUCT_RELATION>';
         $xml .= '<PROD_NUM>'.$this->productNumber.'</PROD_NUM>';

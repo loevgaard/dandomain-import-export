@@ -8,5 +8,5 @@ interface ElementInterface
      *
      * @return string
      */
-    public function getXml();
+    public function getXml() : string;
 }

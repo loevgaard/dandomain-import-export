@@ -12,7 +12,7 @@ class Manufacturer extends Element
         $this->id = $id;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         return '<MANUFAC_ID>' . $this->id . '</MANUFAC_ID>';
     }

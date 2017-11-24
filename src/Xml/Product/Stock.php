@@ -29,7 +29,7 @@ class Stock extends Element
         $this->locationNumber = $locationNumber;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->stockCount) {

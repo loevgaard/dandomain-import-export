@@ -33,7 +33,7 @@ class Description extends Element
         $this->title = $title;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->descriptionShort) {

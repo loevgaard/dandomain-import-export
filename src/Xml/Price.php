@@ -32,7 +32,7 @@ class Price extends Element
         $this->retailPrice          = $retailPrice;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PRICE>';
         $xml .= "<PRICE_PROD_NUM>{$this->productNumber}</PRICE_PROD_NUM>";

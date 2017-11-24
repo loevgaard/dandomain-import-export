@@ -312,7 +312,7 @@ class Advanced extends Element
     }
 
     /**
-     * @return int
+     * @return string
      */
     public function getInternalId() : string
     {

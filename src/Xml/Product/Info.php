@@ -33,7 +33,7 @@ class Info extends Element
         $this->salesCount = $salesCount;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->created) {

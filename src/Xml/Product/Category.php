@@ -17,7 +17,7 @@ class Category extends Element
         $this->default  = $default;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '<PROD_CAT_ID' . ($this->default ? ' priority="1"' : '') . '>' . $this->id . '</PROD_CAT_ID>';
         return $xml;

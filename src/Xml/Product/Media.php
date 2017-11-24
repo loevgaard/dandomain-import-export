@@ -29,7 +29,7 @@ class Media extends Element
         $this->sort = $sort;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->id) {

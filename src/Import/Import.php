@@ -67,7 +67,7 @@ abstract class Import implements ImportInterface
         if ($options[ImportInterface::OPTION_FILENAME]) {
             $filename = $options[ImportInterface::OPTION_FILENAME];
         } else {
-            $filename = uniqid('import-').'.xml';
+            $filename = uniqid('import---'.date('Y-m-d\TH-i-s').'---').'.xml';
         }
 
         $filePath = $this->path.'/'.$filename;

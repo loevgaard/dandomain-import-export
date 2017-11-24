@@ -11,7 +11,7 @@ interface ExportInterface
     const OPTION_FILENAME = 'filename';
 
     /**
-     * If true, the export file will be deleted upon success
+     * If true, the export file will be deleted after script execution
      */
     const OPTION_CLEAN_UP = 'cleanUp';
 
@@ -21,16 +21,30 @@ interface ExportInterface
     const OPTION_LANGUAGE_ID = 'languageId';
 
     /**
+     * The export id for the export
+     */
+    const OPTION_EXPORT_ID = 'exportId';
+
+    /**
      * @param string $dandomainUrl URL of your Dandomain webshop
      * @param string $username The username for your webshop
      * @param string $password The password for your webshop
      * @param string $path The local path where imports should be saved, i.e. /var/www/your/project/public/imports
      */
-    public function __construct(string $dandomainUrl, string $username, string $password, string $path);
+    public function __construct(string $dandomainUrl, string $username, string $password, string $path = '');
 
     /**
+     * @param int $exportId The export id from Dandomain
      * @param array $options The options for this export. Options can be found here: ExportInterface::OPTION_*
      * @return ExportResultInterface
      */
-    public function export(array $options = []) : ExportResultInterface;
+    public function export(int $exportId, array $options = []) : ExportResultInterface;
+
+    /**
+     * Use this method to loop through the elements of the last result
+     * Run ExportInterface::export() before this method
+     *
+     * @return \Generator
+     */
+    public function elements() : \Generator;
 }

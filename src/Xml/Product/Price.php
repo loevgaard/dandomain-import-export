@@ -33,7 +33,7 @@ class Price extends Element
         $this->specialOfferPrice = $specialOfferPrice;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->currencyCode) {

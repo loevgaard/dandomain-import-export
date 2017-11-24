@@ -85,7 +85,7 @@ class General extends Element
         $this->pictureAltText = $pictureAltText;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->productNumber) {

@@ -49,7 +49,7 @@ class CustomFields extends Element
         $this->field10 = $field10;
     }
 
-    public function getXml()
+    public function getXml() : string
     {
         $xml = '';
         if ($this->field1) {
