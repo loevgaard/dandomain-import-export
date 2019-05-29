@@ -52,10 +52,10 @@ class Period extends Element {
             $xml .= '<TITLE>' . $this->title. '</TITLE>';
         }
         if($this->startDate) {
-            $xml .= '<START_DATE>' . $this->startDate->format('d-m-Y') . '</START_DATE>';
+            $xml .= '<START_DATE>' . $this->startDate->format('d-m-Y H:i') . '</START_DATE>';
         }
         if($this->endDate) {
-            $xml .= '<END_DATE>' . $this->endDate->format('d-m-Y') . '</END_DATE>';
+            $xml .= '<END_DATE>' . $this->endDate->format('d-m-Y H:i') . '</END_DATE>';
         }
         if($this->disabled) {
             $xml .= '<DISABLED>' . ($this->disabled ? 'True' : 'False') . '</DISABLED>';
